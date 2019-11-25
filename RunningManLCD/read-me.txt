@@ -1,0 +1,13 @@
+*******************************************************************************************
+*CREATED BY ANDREW DIBELLA  MARIST COLLEGE                                                *
+*                                                                                         *
+*******************************************************************************************
+YOU MUST USE JOYSTICK FROM 37 SENSOR KIT 
+AND ARDUINO GEN UNO LCD CRYSTAL 
+*
+*
+SEE IMAGE FOR CORRECT WIRING
+*
+*
+*
+enjoy. 
