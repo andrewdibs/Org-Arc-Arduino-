@@ -2,7 +2,7 @@
 *CREATED BY ANDREW DIBELLA  MARIST COLLEGE                                                *
 *                                                                                         *
 *******************************************************************************************
-YOU MUST USE JOYSTICK FROM 37 SENSOR KIT 
+YOU MUST USE JOYSTICK FROM 37 SENSOR KIT WITH BUTTON FOR RESET
 AND ARDUINO GEN UNO LCD CRYSTAL 
 *
 *
