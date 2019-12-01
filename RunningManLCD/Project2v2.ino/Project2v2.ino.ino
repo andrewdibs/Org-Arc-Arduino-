@@ -2,7 +2,8 @@
 #include <math.h>;
 LiquidCrystal lcd(5,6,8,9,10,11);
 
-const byte interruptPin = 2;
+const byte interruptPin = 2;                    
+
 int joyPin1 = 0;                 // slider variable connecetd to analog pin 0
 int joyPin2 = 1;                 // slider variable connecetd to analog pin 1
 int joyValue= 0;
@@ -11,7 +12,7 @@ boolean isJumping = false;
 boolean isDucking = false;
 boolean isRunning = true;
 boolean isDead = false;
-int delayTime= 400;
+int delayTime= 300;
 int sw = 1;
 boolean upperTerrain[16] = {false,false,false,false,false,false,false,false,false,false,
                             false,false,false,true,false,false};
@@ -101,7 +102,7 @@ static byte alternateUpper[8] = {
 
 //SETUP
 void setup() {
-  analogWrite(4,50);
+  analogWrite(4,20);
   lcd.begin(16,2);
   lcd.createChar(0,jumping);
   lcd.createChar(1,alternateLower);
@@ -112,7 +113,7 @@ void setup() {
   lcd.createChar(6,alternateUpper);
   lcd.createChar(7,alternateJump);
   pinMode(interruptPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(2), resetGame, RISING);
+  attachInterrupt(0, resetGame, RISING);
 
   Serial.begin(9600);
 }
@@ -149,7 +150,7 @@ void loop() {
   }
   else{//if death then print menu with last score
     lcd.setCursor(0,0);
-    lcd.print("Press Stick!");
+    lcd.print("Press Button!");
     lcd.setCursor(0,1);
     lcd.print("Last Run:");
     lcd.setCursor(10,1);
@@ -161,7 +162,7 @@ void loop() {
   }
   //delay needed for loops to run slow enough
   delay(delayTime);
-  if (delayTime>50)delayTime--;
+  if (delayTime>100)delayTime--;
   lcd.clear();
 }//end loop
 
@@ -207,7 +208,7 @@ void printScreen(){
     
   }
   //print terrain
-  for (int c = 0; c<16;c++){
+  for (int c = 0; c<15;c++){
     if (upperTerrain[c]){
       lcd.setCursor(c,0);
       lcd.write(byte(4));
@@ -230,7 +231,7 @@ void shiftArrays(){
     upperTerrain[i] = upperTerrain[i+1];
     lowerTerrain[i] = lowerTerrain[i+1];
   }
-
+  //Create random terrain
   if (upperTerrain[14]||upperTerrain[15]){
      lowerTerrain[14] = false;
      lowerTerrain[15] = false;
